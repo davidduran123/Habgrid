@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1820C7B62EDF82F5006C1846 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1820C7B52EDF82F5006C1846 /* WidgetKit.framework */; };
+		1820C7B82EDF82F5006C1846 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1820C7B72EDF82F5006C1846 /* SwiftUI.framework */; };
+		1820C7C32EDF82F7006C1846 /* HabgridWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1820C7B32EDF82F4006C1846 /* HabgridWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1820C7932EDF82C9006C1846 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,13 +27,47 @@
 			remoteGlobalIDString = 1820C7842EDF82C7006C1846;
 			remoteInfo = Habgrid;
 		};
+		1820C7C12EDF82F7006C1846 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1820C77D2EDF82C7006C1846 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1820C7B22EDF82F4006C1846;
+			remoteInfo = HabgridWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1820C7C82EDF82F7006C1846 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1820C7C32EDF82F7006C1846 /* HabgridWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1820C7852EDF82C7006C1846 /* Habgrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habgrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1820C7922EDF82C9006C1846 /* HabgridTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabgridTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1820C79C2EDF82C9006C1846 /* HabgridUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabgridUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1820C7B32EDF82F4006C1846 /* HabgridWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HabgridWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		1820C7B52EDF82F5006C1846 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		1820C7B72EDF82F5006C1846 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1820C7C42EDF82F7006C1846 /* Exceptions for "HabgridWidget" folder in "HabgridWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 1820C7B22EDF82F4006C1846 /* HabgridWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1820C7872EDF82C7006C1846 /* Habgrid */ = {
@@ -43,6 +83,14 @@
 		1820C79F2EDF82C9006C1846 /* HabgridUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = HabgridUITests;
+			sourceTree = "<group>";
+		};
+		1820C7B92EDF82F5006C1846 /* HabgridWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1820C7C42EDF82F7006C1846 /* Exceptions for "HabgridWidget" folder in "HabgridWidgetExtension" target */,
+			);
+			path = HabgridWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -69,6 +117,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1820C7B02EDF82F4006C1846 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1820C7B82EDF82F5006C1846 /* SwiftUI.framework in Frameworks */,
+				1820C7B62EDF82F5006C1846 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +135,8 @@
 				1820C7872EDF82C7006C1846 /* Habgrid */,
 				1820C7952EDF82C9006C1846 /* HabgridTests */,
 				1820C79F2EDF82C9006C1846 /* HabgridUITests */,
+				1820C7B92EDF82F5006C1846 /* HabgridWidget */,
+				1820C7B42EDF82F5006C1846 /* Frameworks */,
 				1820C7862EDF82C7006C1846 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +147,18 @@
 				1820C7852EDF82C7006C1846 /* Habgrid.app */,
 				1820C7922EDF82C9006C1846 /* HabgridTests.xctest */,
 				1820C79C2EDF82C9006C1846 /* HabgridUITests.xctest */,
+				1820C7B32EDF82F4006C1846 /* HabgridWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1820C7B42EDF82F5006C1846 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1820C7B52EDF82F5006C1846 /* WidgetKit.framework */,
+				1820C7B72EDF82F5006C1846 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,10 +171,12 @@
 				1820C7812EDF82C7006C1846 /* Sources */,
 				1820C7822EDF82C7006C1846 /* Frameworks */,
 				1820C7832EDF82C7006C1846 /* Resources */,
+				1820C7C82EDF82F7006C1846 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1820C7C22EDF82F7006C1846 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				1820C7872EDF82C7006C1846 /* Habgrid */,
@@ -163,6 +234,28 @@
 			productReference = 1820C79C2EDF82C9006C1846 /* HabgridUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		1820C7B22EDF82F4006C1846 /* HabgridWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1820C7C52EDF82F7006C1846 /* Build configuration list for PBXNativeTarget "HabgridWidgetExtension" */;
+			buildPhases = (
+				1820C7AF2EDF82F4006C1846 /* Sources */,
+				1820C7B02EDF82F4006C1846 /* Frameworks */,
+				1820C7B12EDF82F4006C1846 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				1820C7B92EDF82F5006C1846 /* HabgridWidget */,
+			);
+			name = HabgridWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = HabgridWidgetExtension;
+			productReference = 1820C7B32EDF82F4006C1846 /* HabgridWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +277,9 @@
 						CreatedOnToolsVersion = 26.1.1;
 						TestTargetID = 1820C7842EDF82C7006C1846;
 					};
+					1820C7B22EDF82F4006C1846 = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
 				};
 			};
 			buildConfigurationList = 1820C7802EDF82C7006C1846 /* Build configuration list for PBXProject "Habgrid" */;
@@ -203,6 +299,7 @@
 				1820C7842EDF82C7006C1846 /* Habgrid */,
 				1820C7912EDF82C9006C1846 /* HabgridTests */,
 				1820C79B2EDF82C9006C1846 /* HabgridUITests */,
+				1820C7B22EDF82F4006C1846 /* HabgridWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +320,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		1820C79A2EDF82C9006C1846 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1820C7B12EDF82F4006C1846 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,6 +357,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1820C7AF2EDF82F4006C1846 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -265,6 +376,11 @@
 			isa = PBXTargetDependency;
 			target = 1820C7842EDF82C7006C1846 /* Habgrid */;
 			targetProxy = 1820C79D2EDF82C9006C1846 /* PBXContainerItemProxy */;
+		};
+		1820C7C22EDF82F7006C1846 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1820C7B22EDF82F4006C1846 /* HabgridWidgetExtension */;
+			targetProxy = 1820C7C12EDF82F7006C1846 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -538,6 +654,66 @@
 			};
 			name = Release;
 		};
+		1820C7C62EDF82F7006C1846 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H362TBFZGA;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HabgridWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HabgridWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Uli.Habgrid.HabgridWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1820C7C72EDF82F7006C1846 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H362TBFZGA;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HabgridWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HabgridWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Uli.Habgrid.HabgridWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -573,6 +749,15 @@
 			buildConfigurations = (
 				1820C7AD2EDF82C9006C1846 /* Debug */,
 				1820C7AE2EDF82C9006C1846 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1820C7C52EDF82F7006C1846 /* Build configuration list for PBXNativeTarget "HabgridWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1820C7C62EDF82F7006C1846 /* Debug */,
+				1820C7C72EDF82F7006C1846 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
