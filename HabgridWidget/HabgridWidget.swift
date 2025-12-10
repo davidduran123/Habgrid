@@ -1,82 +1,140 @@
-//
-//  HabgridWidget.swift
-//  HabgridWidget
-//
-//  Created by David Duran Fuentes on 2025-12-02.
-//
-
 import WidgetKit
 import SwiftUI
 
+/*
+ 
+ Quick context:
+ 
+ - struct: a lightweight class with variables and methods
+ - let: defines a final immutable variable
+ - var: a mutable variable
+ 
+*/
+
+// Class type that feeds widget data over time, methods in here are called by WidgetKit to get entries.
+
 struct Provider: TimelineProvider {
+    
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), emoji: "😀")
+ 
+        SimpleEntry(
+            
+            date: Date(),
+            emoji: "😀",
+            habits: ["W", "L", "R","P"],
+            days: daysForCurrentMonth()
+            
+        )
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), emoji: "😀")
+        
+        let entry = SimpleEntry(
+            
+            date: Date(),
+            emoji: "😀",
+            habits: ["W", "L", "R", "P"],
+            days: daysForCurrentMonth()
+            
+        )
+        
         completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+        
         let currentDate = Date()
+        let habits = ["W", "L", "R", "P"] // later: load from user defaults
+        let days = daysForCurrentMonth()
+    
+        var entries: [SimpleEntry] = []
+        
         for hourOffset in 0 ..< 5 {
+            
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, emoji: "😀")
+            
+            let entry = SimpleEntry(
+                
+                date: entryDate,
+                emoji: "😀",
+                habits: habits,
+                days: days
+                
+            )
+            
             entries.append(entry)
         }
-
+        
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
+        
     }
-
-//    func relevances() async -> WidgetRelevances<Void> {
-//        // Generate a list containing the contexts this widget is relevant in.
-//    }
+    
+    // Determines and returns the number of days in a given month.
+    private func daysForCurrentMonth() -> [Int] {
+        
+        let calendar = Calendar.current
+        let today = Date()
+        
+        if let range = calendar.range(of: .day, in: .month, for: today) {
+            return Array(range)
+        }
+        else {
+            return Array(1...30)
+        }
+    }
 }
 
+// Class that serves as a data model for WidgetKit.
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let emoji: String
+    let habits: [String]
+    let days: [Int]
 }
 
+
+// Draws the widget's UI.
 struct HabgridWidgetEntryView : View {
+    
     var entry: Provider.Entry
 
-        let habits = ["W", "L", "R"]
-        let days = Array(1...7)
+    var body: some View {
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 15) {
+                    Text(entry.date.formatted(.dateTime.month(.wide)))
+                        .font(.caption.bold())
 
-        var body: some View {
-            VStack(alignment: .leading, spacing: 6) {
-                Text("December")
-                    .font(.caption.bold())
+                    ForEach(entry.habits, id: \.self) { habit in
+                        HStack(spacing: 2) {
+                            Text(habit)
+                                .font(.system(size: 8).bold())
+                                .frame(width: 10, alignment: .leading)
 
-                ForEach(habits, id: \.self) { habit in
-                    HStack(spacing: 4) {
-                        Text(habit.prefix(3))
-                            .font(.system(size: 10).bold())
-                            .frame(width: 26, alignment: .leading)
-
-                        ForEach(days, id: \.self) { day in
-                            Circle()
-                                .fill(day % 2 == 0 ? Color.green : Color.gray.opacity(0.3))
-                                .frame(width: 14, height: 14)
+                            ForEach(entry.days, id: \.self) { day in
+                                RoundedRectangle(cornerRadius: 0, style: .continuous)
+                                    .fill(Color.blue)
+                                    .frame(width: 8, height: 8)
+                            }
                         }
                     }
                 }
+                .padding(0)
+
+                Spacer()   // pushes content to use available width
             }
-            .padding(8)
-            .background(Color(.systemGray6))
         }
 }
 
+
+// Class that declares the widget and tells the system how to display it.
+
 struct HabgridWidget: Widget {
+    
     let kind: String = "HabgridWidget"
 
     var body: some WidgetConfiguration {
+        
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             if #available(iOS 17.0, *) {
                 HabgridWidgetEntryView(entry: entry)
@@ -89,12 +147,26 @@ struct HabgridWidget: Widget {
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
+        .supportedFamilies([.systemMedium])
     }
 }
 
-#Preview(as: .systemSmall) {
+
+// Previews the widget.
+
+#Preview(as: .systemMedium) {
     HabgridWidget()
 } timeline: {
-    SimpleEntry(date: .now, emoji: "😀")
-    SimpleEntry(date: .now, emoji: "🤩")
+    SimpleEntry(
+        date: .now,
+        emoji: "😀",
+        habits: ["W", "L", "R", "P"],
+        days: Array(1...31)
+    )
+    SimpleEntry(
+        date: .now,
+        emoji: "🤩",
+        habits: ["W", "L", "R", "P"],
+        days: Array(1...31)
+    )
 }
